@@ -7,6 +7,12 @@ console.log(`Number of categories: ${totalCategories.length}`);
 //текст заголовка элемента(тега < h2 >) и количество элементов в категории(всех вложенных в него < li >)
 const categoriesArray = [...totalCategories]
     .map(categories => `Category: ${categories.children[0].textContent}
-    Elements: ${categories.children[1].children.length}`)
+    Elements: ${categories.children[1].children.length}`) //
 .join('\n');//обьединим все элементы массива в качестве разделителя используем символ перевода строки '\n'
 console.log(categoriesArray);
+
+
+
+
+
+
