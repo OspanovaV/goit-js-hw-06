@@ -22,4 +22,5 @@ const createItems = ingredients.map((ingredient) => {//трансформиру�
 });
 ingredientsEl.append(...createItems);//вставляем элементы
  console.log(ingredientsEl);
+ 
 
