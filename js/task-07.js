@@ -9,10 +9,9 @@
 const inputEl = document.querySelector('#font-size-control');
 const sizeTextEl = document.querySelector('#text');
 
-//каждое изменение в инпуте при вводе текста выполняем функцию
+//каждое изменение в инпуте при вводе текста выполняем коллбэк-функцию
 inputEl.addEventListener('input', fontSizeChange);
 
-//прослушали событие input
 function fontSizeChange(event) {
  //нашли значение Input и изменили размер текста другого элемента
     sizeTextEl.style.fontSize = event.currentTarget.value + 'px';

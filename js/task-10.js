@@ -21,27 +21,39 @@ const btnCreate = document.querySelector('button[data-create]');
 const btnDestroy = document.querySelector('button[data-destroy]');
 const divBoxEl = document.querySelector('#boxes');
 
+btnCreate.addEventListener('click', onCreateBoxes);
+btnDestroy.addEventListener('click', destroyBoxes);
 
-const createBoxes = (amount) => { 
-     let fragment = new DocumentFragment();
-     const arrayDiv = [];// массив для хранения полученых дивов
-    for (let i = 0; i < amount; i++) { // интератор будет выполнятся пока меньше значения параметра
-      const widthHeightSize = 30 + i * 10 + 'px'; // на каждой интераци прибавляем 10пикселей
-      const divNew = document.createElement("div"); // создаем див
-        divNew.style.width = widthHeightSize; // ширина
-        divNew.style.height = widthHeightSize;// высота
-        divNew.style.backgroundColor = getRandomHexColor();// рандомный фон
-      arrayDiv.push(divNew); // пушим наш готовый див в массив
-      fragment.appendChild(divNew);
-    }
-   boxes.appendChild(fragment);
-}
+function onCreateBoxes() {
+  let numbers = []; 
+  for (let i = 1; i <= inputEl.value; i ++) {
+    numbers.push(i);
+  };
+    const createDivs = numbers.map((number) => {
+      const divEl = document.createElement('div');// создаем див
+      const value = ((30 + divBoxEl.childElementCount*10) + number * 10);
+      divEl.style.width = `${value}px`;// ширина
+      divEl.style.height = `${value}px`;// высота
+      divEl.style.backgroundColor = getRandomHexColor();//рандомный цвет фона
+      
+      return divEl;    
+    }); 
+    
+    divBoxEl.append(...createDivs);//вставляем элементы
+    console.log(divBoxEl);
+  
+};
 
+//очищаем содержимое(удаляем все созданные элементы)
+function destroyBoxes() {
+  inputEl.value = '';
+  divBoxEl.innerHTML = '';
+  };
 
-
-//генерим рандомный цвет
+// генерим рандомный цвет
   function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215)
       .toString(16)
       .padStart(6, 0)}`
 };
+

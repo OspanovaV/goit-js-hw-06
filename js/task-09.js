@@ -13,7 +13,7 @@ buttonEl.addEventListener('click', onChangeColor);
 function onChangeColor() {
   let color = getRandomHexColor();
   document.body.setAttribute('style', `background-color: ${color}`)
-  spanEl.textContent = color;
+  spanEl.textContent = color;//выводит значение цвета
 }
 //генерим рандомный цвет
   function getRandomHexColor() {
