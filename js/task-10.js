@@ -25,24 +25,18 @@ btnCreate.addEventListener('click', onCreateBoxes);
 btnDestroy.addEventListener('click', destroyBoxes);
 
 function onCreateBoxes() {
-  let numbers = []; 
-  for (let i = 1; i <= inputEl.value; i ++) {
-    numbers.push(i);
-  };
-    const createDivs = numbers.map((number) => {
-      const divEl = document.createElement('div');// создаем див
-      const value = ((30 + divBoxEl.childElementCount*10) + number * 10);
-      divEl.style.width = `${value}px`;// ширина
-      divEl.style.height = `${value}px`;// высота
-      divEl.style.backgroundColor = getRandomHexColor();//рандомный цвет фона
-      
-      return divEl;    
-    }); 
-    
-    divBoxEl.append(...createDivs);//вставляем элементы
-    console.log(divBoxEl);
+
+  for (let i = 1; i <= inputEl.value; i++) {//создаем переменную со значением 1, сравниваем её с inputEl
   
-};
+    const divEl = document.createElement('div');// создаем див
+    const value = ((30 + divBoxEl.childElementCount * 10) + i * 10);//увеличиваем каждый блок на 10
+    divEl.style.width = `${value}px`;// ширина
+    divEl.style.height = `${value}px`;// высота
+    divEl.style.backgroundColor = getRandomHexColor();//рандомный цвет фона
+  
+   divBoxEl.append(divEl);//вставляем элементы
+    }; 
+  };
 
 //очищаем содержимое(удаляем все созданные элементы)
 function destroyBoxes() {
